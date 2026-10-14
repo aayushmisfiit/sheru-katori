@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sheru Katori: a smart steel dog bowl made for Indian homes, seasons and breeds.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Sheru Smart Katori</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Rozha+One&family=Mukta:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: truck-art poster — loud painted bands stacked like a Tata 407 tailgate, scalloped borders between them */
+:root{
+  --haldi:#F7B500; --haldi-soft:#FFE08A;
+  --rani:#D6246E; --tota:#2E9E57; --neela:#0E4F66; --neela-deep:#08303F;
+  --ink:#1B1530; --chalk:#FFFDF6; --line:rgba(27,21,48,.14);
+  --display:"Yatra One","Rozha One",Georgia,serif;
+  --num:"Rozha One",Georgia,serif;
+  --body:"Mukta",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--haldi);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--rani);outline-offset:3px;border-radius:4px}
+.eyebrow{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 17px/1 var(--body);padding:15px 24px;border-radius:999px;border:3px solid var(--ink);text-decoration:none;cursor:pointer;transition:transform .15s, box-shadow .15s}
+.btn-primary{background:var(--rani);color:var(--chalk);box-shadow:4px 4px 0 var(--ink)}
+.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--chalk)}
+
+/* scallop divider, like painted truck borders */
+.scallop{height:22px;background:
+  radial-gradient(circle at 11px 0,var(--from) 11px,transparent 11.5px) 0 0/22px 22px repeat-x, var(--to)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ink);color:var(--chalk)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:26px;color:var(--haldi)}
+.logo small{font-family:var(--body);font-size:12px;color:var(--haldi-soft);letter-spacing:.08em;display:block;line-height:1}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-weight:500}
+.nav ul a{text-decoration:none;opacity:.85}
+.nav ul a:hover{opacity:1;color:var(--haldi)}
+.nav .btn{padding:10px 16px;font-size:15px;border-color:var(--haldi);box-shadow:none}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{padding-block:56px 40px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-grid>*{min-width:0}
+.hero .eyebrow{display:inline-block;background:var(--ink);color:var(--haldi);padding:6px 12px;border-radius:4px;transform:rotate(-1.5deg)}
+.hero h1{font-size:clamp(44px,7.4vw,88px);margin-top:20px;color:var(--ink)}
+.hero h1 .dev{display:block;font-size:.62em;color:var(--rani);margin-top:6px}
+.hero .lede{font-size:20px;max-width:34ch;margin-top:20px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero .note{margin-top:14px;font-size:14px;font-weight:500}
+.bowl-card{background:var(--neela);border:4px solid var(--ink);border-radius:28px;box-shadow:10px 10px 0 var(--ink);padding:18px;position:relative;aspect-ratio:1/1.02;max-width:100%}
+.bowl-card svg{width:100%;height:100%;display:block}
+.sticker{position:absolute;background:var(--chalk);border:3px solid var(--ink);border-radius:14px;padding:8px 12px;font-weight:700;font-size:14px;line-height:1.25;box-shadow:3px 3px 0 var(--ink)}
+.sticker b{font-family:var(--num);font-weight:400;font-size:22px;display:block;color:var(--rani)}
+.s1{top:-18px;left:-18px;transform:rotate(-4deg)}
+.s2{bottom:22px;right:-20px;transform:rotate(3deg)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.bowl-card{max-width:440px;margin-inline:auto}.s1{left:-6px}.s2{right:-6px}}
+
+/* marquee */
+.marquee{background:var(--rani);color:var(--chalk);border-block:4px solid var(--ink);overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:36px;padding-block:12px;animation:roll 38s linear infinite;font-family:var(--display);font-size:22px}
+.marquee-track span::after{content:"✦";margin-left:36px;color:var(--haldi)}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding-block:72px}
+.sec-head{display:grid;gap:12px;max-width:720px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(34px,5vw,56px)}
+.sec-head p{font-size:19px}
+
+/* desi problems */
+.problems{background:var(--chalk)}
+.prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.prob{border:3px solid var(--ink);border-radius:20px;padding:24px;display:grid;gap:10px;align-content:start;background:var(--chalk)}
+.prob:nth-child(1){background:#FFE7D6}
+.prob:nth-child(2){background:#DDF1E4}
+.prob:nth-child(3){background:#FBE0EC}
+.prob:nth-child(4){background:#FFF1BF}
+.prob:nth-child(5){background:#DCEEF4}
+.prob:nth-child(6){background:#EDE4FA}
+.prob .tag{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--rani)}
+.prob h3{font-size:26px}
+.prob .stat{font-family:var(--num);font-size:34px;line-height:1;color:var(--neela)}
+.prob .stat small{font-family:var(--body);font-size:14px;color:var(--ink);font-weight:500;margin-left:4px}
+
+/* how it works */
+.prob .why{font-size:15px;border-top:2px dashed var(--line);padding-top:10px;margin-top:4px}
+.prob .why b{color:var(--neela)}
+.step .you{font-weight:700;color:var(--haldi);margin-top:4px}
+.chart-card{margin:40px 0 0;border:3px solid var(--haldi);border-radius:22px;padding:24px;display:grid;gap:14px}
+.chart-card figcaption{font-size:18px}
+.chart-scroll{overflow-x:auto;min-width:0}
+.chart-scroll svg{width:100%;min-width:480px;height:auto;display:block}
+.chart-card .fine{opacity:.7}
+.never{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:22px}
+.never div{background:var(--neela-deep);border-radius:16px;padding:18px}
+.never b{color:var(--haldi);display:block;font-size:18px}
+
+.how{background:var(--neela);color:var(--chalk)}
+.how .eyebrow{color:var(--haldi)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{border:3px solid var(--haldi);border-radius:22px;padding:26px;display:grid;gap:10px;align-content:start;position:relative}
+.step .n{font-family:var(--num);font-size:56px;line-height:1;color:var(--haldi)}
+.step h3{font-size:28px}
+.step p{opacity:.9}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* app mock */
+.app{background:var(--haldi)}
+.app-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.app-grid>*{min-width:0}
+.phone{width:min(340px,100%);margin-inline:auto;background:var(--ink);border-radius:42px;padding:12px;box-shadow:12px 12px 0 var(--rani)}
+.screen{background:var(--chalk);border-radius:32px;padding:22px 18px;display:grid;gap:14px;font-size:15px}
+.screen .top{display:flex;justify-content:space-between;align-items:center}
+.screen .top b{font-family:var(--display);font-weight:400;font-size:22px}
+.pill{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--tota);color:var(--chalk)}
+.pill.warn{background:var(--rani)}
+.metric{display:grid;gap:6px}
+.metric .row{display:flex;justify-content:space-between;font-weight:700;font-variant-numeric:tabular-nums}
+.bar{height:10px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:inherit}
+.msg{background:#DDF1E4;border-radius:16px 16px 16px 4px;padding:12px 14px;line-height:1.4}
+.msg.alert{background:#FBE0EC}
+.sample{font-size:12px;text-align:center;opacity:.6}
+.app ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px}
+.app li{display:flex;gap:12px;align-items:flex-start;font-size:18px}
+.app li::before{content:"";flex:0 0 14px;height:14px;margin-top:7px;background:var(--rani);border:2px solid var(--ink);transform:rotate(45deg)}
+@media (max-width:860px){.app-grid{grid-template-columns:1fr}}
+
+/* seasons */
+.seasons{background:var(--chalk)}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.tab{font:700 16px/1 var(--body);padding:12px 18px;border-radius:999px;border:3px solid var(--ink);background:var(--chalk);color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--haldi)}
+.season-panel{border:4px solid var(--ink);border-radius:26px;overflow:hidden;display:grid;grid-template-columns:280px 1fr}
+.season-panel>*{min-width:0}
+.season-side{padding:28px;display:grid;gap:8px;align-content:start;color:var(--chalk)}
+.season-side .big{font-family:var(--display);font-size:46px;line-height:1}
+.season-side .months{font-weight:700}
+.season-side .temp{font-family:var(--num);font-size:30px;margin-top:10px}
+.season-body{padding:28px;display:grid;gap:18px;background:var(--chalk)}
+.season-body h3{font-size:28px}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.tip{border:2px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:4px;align-content:start}
+.tip b{font-size:17px}
+.watch{background:#FFF1BF;border-radius:14px;padding:14px 16px;font-weight:500}
+@media (max-width:760px){.season-panel{grid-template-columns:1fr}}
+
+/* breeds */
+.breeds{background:var(--neela-deep);color:var(--chalk)}
+.breeds .eyebrow{color:var(--haldi)}
+.breed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.breed{background:var(--chalk);color:var(--ink);border-radius:20px;padding:20px;display:grid;gap:6px;align-content:start;border:3px solid var(--haldi)}
+.breed .from{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--tota)}
+.breed h3{font-size:25px}
+.breed .kg{font-family:var(--num);color:var(--rani);font-size:20px}
+
+/* calculator */
+.calc{background:var(--rani);color:var(--chalk)}
+.calc .eyebrow{color:var(--haldi)}
+.calc-box{background:var(--chalk);color:var(--ink);border:4px solid var(--ink);border-radius:26px;box-shadow:10px 10px 0 var(--ink);padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.calc-box>*{min-width:0}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-weight:700}
+.field select,.field input{font:500 17px var(--body);padding:12px 14px;border:3px solid var(--ink);border-radius:12px;background:var(--chalk);color:var(--ink);width:100%}
+.result{background:var(--haldi-soft);border-radius:18px;padding:22px;display:grid;gap:14px;align-content:start}
+.result .grams{font-family:var(--num);font-size:56px;line-height:1;color:var(--neela)}
+.result .grams small{font-family:var(--body);font-size:18px;color:var(--ink)}
+.result .water{font-family:var(--num);font-size:30px;color:var(--rani)}
+.result p{font-size:15px}
+.fine{font-size:13px;opacity:.75}
+@media (max-width:760px){.calc-box{grid-template-columns:1fr}}
+
+/* pricing */
+.price .sec-head{max-width:760px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:900px;margin-inline:auto;align-items:start}
+.price-card{position:relative;background:var(--chalk);border:4px solid var(--ink);border-radius:30px;box-shadow:8px 8px 0 var(--ink);padding:32px 26px;display:grid;gap:14px;text-align:center;justify-items:center}
+.price-card.featured{box-shadow:8px 8px 0 var(--rani)}
+.price-card h3{font-size:32px}
+.badge{position:absolute;top:-16px;background:var(--rani);color:var(--chalk);border:3px solid var(--ink);border-radius:999px;padding:4px 14px;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.price-card .mrp{text-decoration:line-through;opacity:.6;font-weight:700}
+.price-card .amt{font-family:var(--num);font-size:clamp(52px,8vw,72px);line-height:1;color:var(--rani)}
+.price-card .emi{font-weight:700}
+.incl{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.incl span{border:2px solid var(--ink);border-radius:999px;padding:5px 12px;font-weight:500;font-size:14px}
+.pay{text-align:center;font-weight:700;margin-top:28px}
+.cities{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:900px;margin:22px auto 0}
+.cities div{background:var(--ink);color:var(--chalk);border-radius:18px;padding:18px 20px;display:grid;gap:6px}
+.cities b{color:var(--haldi)}
+
+/* life */
+.life{background:var(--chalk)}
+.life-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.scene{border:3px solid var(--ink);border-radius:20px;padding:22px;display:grid;gap:8px;align-content:start;box-shadow:5px 5px 0 var(--haldi)}
+.scene .time{font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--neela)}
+.scene h3{font-size:24px}
+
+/* footer */
+footer{background:var(--ink);color:var(--chalk);padding-block:44px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-end}
+.foot .horn{font-family:var(--display);font-size:clamp(34px,6vw,58px);color:var(--haldi);line-height:1}
+.foot p{opacity:.75;font-size:14px;max-width:52ch}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Sheru home">
+      <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="#F7B500" stroke="#FFFDF6" stroke-width="2"/><ellipse cx="18" cy="22" rx="6" ry="5" fill="#1B1530"/><circle cx="11" cy="14" r="3" fill="#1B1530"/><circle cx="18" cy="11" r="3" fill="#1B1530"/><circle cx="25" cy="14" r="3" fill="#1B1530"/></svg>
+      <span>Sheru<small>शेरू · Made in India</small></span>
+    </a>
+    <ul>
+      <li><a href="#katori">Katori</a></li>
+      <li><a href="#science">Science, simple</a></li>
+      <li><a href="#app">App</a></li>
+      <li><a href="#life">Busy parents</a></li>
+      <li><a href="#mausam">Mausam guide</a></li>
+      <li><a href="#price">Pricing</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#price">Book karo</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding-top:56px">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Now in Mumbai, Delhi NCR, Bengaluru, Pune, Hyderabad, Chennai + 30 more cities</span>
+      <h1>Har nivaale mein, Sheru ki sehat.<span class="dev">हर निवाले में सेहत।</span></h1>
+      <p class="lede">You're at the office. He's at home with the didi or the dog walker. Sheru Katori is a smart steel bowl that tells you on your phone whether he ate, how much he drank, and when something is off. Before the vet bill, not after.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#price">Pre-book for ₹499</a>
+        <a class="btn btn-ghost" href="#science">Science, seedhi baat</a>
+      </div>
+      <p class="note">For the Golden in Gurugram, the Shih Tzu in Bandra and the adopted indie in Indiranagar.</p>
+    </div>
+    <div class="bowl-card" aria-label="Illustration of the Sheru Katori smart bowl with a marigold garland">
+      <svg viewBox="0 0 400 400" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="steel" x1="0" x2="1"><stop offset="0" stop-color="#9FB3BE"/><stop offset=".45" stop-color="#F2F7FA"/><stop offset=".7" stop-color="#C9D6DD"/><stop offset="1" stop-color="#7E949F"/></linearGradient>
+        </defs>
+        <!-- rangoli dots -->
+        <g fill="#F7B500" opacity=".9">
+          <circle cx="200" cy="56" r="6"/><circle cx="170" cy="64" r="4"/><circle cx="230" cy="64" r="4"/><circle cx="145" cy="80" r="3"/><circle cx="255" cy="80" r="3"/>
+        </g>
+        <path d="M200 30 l14 24 -14 24 -14 -24z" fill="#D6246E" stroke="#1B1530" stroke-width="3"/>
+        <!-- floor shadow -->
+        <ellipse cx="200" cy="318" rx="150" ry="22" fill="#08303F"/>
+        <!-- bowl -->
+        <path d="M70 200 Q78 300 200 308 Q322 300 330 200 Z" fill="url(#steel)" stroke="#1B1530" stroke-width="4"/>
+        <ellipse cx="200" cy="200" rx="130" ry="32" fill="#E7EEF2" stroke="#1B1530" stroke-width="4"/>
+        <ellipse cx="200" cy="204" rx="108" ry="22" fill="#C98A3A"/>
+        <!-- kibble -->
+        <g fill="#8A5521"><circle cx="160" cy="202" r="7"/><circle cx="182" cy="196" r="6"/><circle cx="210" cy="206" r="7"/><circle cx="238" cy="198" r="6"/><circle cx="196" cy="212" r="5"/><circle cx="252" cy="208" r="5"/><circle cx="140" cy="208" r="5"/></g>
+        <!-- sensor band -->
+        <rect x="150" y="252" width="100" height="22" rx="11" fill="#1B1530"/>
+        <circle cx="170" cy="263" r="5" fill="#2E9E57"/><text x="186" y="268" font-family="Mukta,sans-serif" font-weight="800" font-size="13" fill="#F7B500">SHERU</text>
+        <!-- marigold garland -->
+        <g stroke="#1B1530" stroke-width="2">
+          <circle cx="78" cy="214" r="13" fill="#F28C00"/><circle cx="104" cy="232" r="13" fill="#F7B500"/><circle cx="132" cy="246" r="13" fill="#F28C00"/><circle cx="164" cy="254" r="0"/>
+          <circle cx="322" cy="214" r="13" fill="#F28C00"/><circle cx="296" cy="232" r="13" fill="#F7B500"/><circle cx="268" cy="246" r="13" fill="#F28C00"/>
+        </g>
+        <g fill="#2E9E57"><path d="M90 222 q6 -12 14 0z"/><path d="M118 240 q6 -12 14 0z"/><path d="M282 240 q6 -12 14 0z"/><path d="M310 222 q6 -12 14 0z"/></g>
+        <!-- signal waves -->
+        <g fill="none" stroke="#F7B500" stroke-width="5" stroke-linecap="round">
+          <path d="M300 120 q20 20 0 40"/><path d="M322 104 q34 36 0 72"/>
+          <path d="M100 120 q-20 20 0 40"/><path d="M78 104 q-34 36 0 72"/>
+        </g>
+      </svg>
+      <div class="sticker s1"><b>45°C</b>garmi mein bhi<br>paani ka hisaab</div>
+      <div class="sticker s2"><b>3 din</b>pehle bhook kam<br>hone ka alert</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Horn OK Please</span><span>Golden from Gurugram</span><span>Shih Tzu from Bandra</span><span>Beagle from Koramangala</span><span>Husky in Hyderabad (AC on please)</span><span>Indie from Indiranagar</span><span>Lab from Jubilee Hills</span><span>Pug from Park Street</span><span>Cocker from Kochi</span><span>Society ka Bruno</span>
+    <span>Horn OK Please</span><span>Golden from Gurugram</span><span>Shih Tzu from Bandra</span><span>Beagle from Koramangala</span><span>Husky in Hyderabad (AC on please)</span><span>Indie from Indiranagar</span><span>Lab from Jubilee Hills</span><span>Pug from Park Street</span><span>Cocker from Kochi</span><span>Society ka Bruno</span>
+  </div>
+</div>
+
+<section class="problems" id="katori">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--rani)">Aapke liye kya badlega</span>
+      <h2>Your dog can't tell you he's unwell. His bowl can.</h2>
+      <p>Dogs hide pain. The first sign is usually small: eating a little less, drinking a little more. Sheru catches those small signs for you, through every Indian season.</p>
+    </div>
+    <div class="prob-grid">
+      <article class="prob"><span class="tag">Garmi · April–June</span><h3>Know he's drinking enough</h3><p>When Delhi hits 44°C you'll get a message if he hasn't had enough paani, before the panting gets serious.</p><p class="why"><b>Simple science:</b> a thirsty dog drinks less, not more, once dehydration sets in. Counting sips catches it.</p></article>
+      <article class="prob"><span class="tag">Barsaat · July–Sept</span><h3>Catch tick fever early</h3><p>If he eats less for 2–3 days in a row, Sheru tells you to see the vet, while it's still a simple blood test.</p><p class="why"><b>Simple science:</b> losing appetite is often the first sign of tick fever, days before a temperature.</p></article>
+      <article class="prob"><span class="tag">Diwali · Oct–Nov</span><h3>See how scared he really was</h3><p>Find out which pataka nights he skipped dinner and how many days it took him to feel normal again.</p><p class="why"><b>Simple science:</b> stressed dogs stop eating. The bowl shows fear you might not notice.</p></article>
+      <article class="prob"><span class="tag">Ghar ka khana</span><h3>Stop guessing portions</h3><p>"Thoda sa dahi-chawal" gets weighed. You see exactly how much he ate, so the extra kilos don't sneak up.</p><p class="why"><b>Simple science:</b> the base is a kitchen scale, accurate to 1 gram.</p></article>
+      <article class="prob"><span class="tag">Mithai ka dabba</span><h3>Keep the whole family in the loop</h3><p>A festival checklist goes to everyone at home: no chocolate, no kaju katli with xylitol, no onion-garlic gravy.</p><p class="why"><b>Simple science:</b> these foods are toxic to dogs even in small amounts.</p></article>
+      <article class="prob"><span class="tag">Joint family</span><h3>No more double dinners</h3><p>Mummy fed him, Papa fed him, the didi next door fed him. Everyone sees one number in the app.</p><p class="why"><b>Simple science:</b> every refill is weighed and logged with the time.</p></article>
+    </div>
+  </div>
+</section>
+
+<div class="scallop" style="--from:var(--chalk);--to:var(--neela)" aria-hidden="true"></div>
+
+<section class="how" id="science">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Science, seedhi baat</span>
+      <h2>No jargon. Bas teen cheezein.</h2>
+      <p>Just as you can tell when your mother isn't feeling well because she's skipped her chai, Sheru learns what normal looks like for your dog and notices when it changes.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">१</span><h3>It weighs</h3><p>The bowl sits on a scale, like the one in your kitchen. It notes how much he eats and drinks, and when.</p><p class="you">For you: an exact number, not a guess.</p></div>
+      <div class="step"><span class="n">२</span><h3>It learns his normal</h3><p>In the first 2 weeks, Sheru figures out what a regular day looks like for <em>your</em> dog, not an average dog.</p><p class="you">For you: alerts that fit him, not a textbook.</p></div>
+      <div class="step"><span class="n">३</span><h3>It tells you</h3><p>When something drifts from normal for a few days, you get a WhatsApp-style message saying what changed and what to do.</p><p class="you">For you: time to act, before it becomes an emergency.</p></div>
+    </div>
+
+    <figure class="chart-card">
+      <figcaption><b>Ek example:</b> Bruno's daily paani over 14 days</figcaption>
+      <div class="chart-scroll">
+      <svg viewBox="0 0 600 250" role="img" aria-label="Line chart of daily water intake. It stays inside the normal band of 1.25 to 1.5 litres for ten days, drops to 0.9 litres on days 11 to 13, triggering an alert on day 12, and recovers on day 14.">
+        <rect x="50" y="38" width="520" height="45" rx="6" fill="#2E9E57" opacity=".28"/>
+        <text x="60" y="32" font-family="Mukta,sans-serif" font-weight="700" font-size="13" fill="#FFFDF6">Bruno ka normal (1.25–1.5 L)</text>
+        <g stroke="#FFFDF6" stroke-opacity=".2"><line x1="50" y1="164" x2="570" y2="164"/><line x1="50" y1="92" x2="570" y2="92"/><line x1="50" y1="20" x2="570" y2="20"/><line x1="50" y1="200" x2="570" y2="200" stroke-opacity=".5"/></g>
+        <g font-family="Mukta,sans-serif" font-size="12" fill="#FFFDF6" fill-opacity=".8" text-anchor="end"><text x="42" y="168">0.8 L</text><text x="42" y="96">1.2 L</text><text x="42" y="24">1.6 L</text></g>
+        <g font-family="Mukta,sans-serif" font-size="12" fill="#FFFDF6" fill-opacity=".8" text-anchor="middle"><text x="50" y="220">Din 1</text><text x="290" y="220">Din 7</text><text x="570" y="220">Din 14</text></g>
+        <polyline fill="none" stroke="#F7B500" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" points="50,74 90,56 130,65 170,47 210,56 250,74 290,52 330,60 370,56 410,65 450,110 490,137 530,146 570,74"/>
+        <g fill="#F7B500"><circle cx="50" cy="74" r="4"/><circle cx="90" cy="56" r="4"/><circle cx="130" cy="65" r="4"/><circle cx="170" cy="47" r="4"/><circle cx="210" cy="56" r="4"/><circle cx="250" cy="74" r="4"/><circle cx="290" cy="52" r="4"/><circle cx="330" cy="60" r="4"/><circle cx="370" cy="56" r="4"/><circle cx="410" cy="65" r="4"/><circle cx="570" cy="74" r="5"/></g>
+        <g fill="#D6246E" stroke="#FFFDF6" stroke-width="2"><circle cx="450" cy="110" r="6"/><circle cx="490" cy="137" r="8"/><circle cx="530" cy="146" r="6"/></g>
+        <line x1="490" y1="145" x2="490" y2="176" stroke="#FFFDF6" stroke-width="2"/>
+        <rect x="394" y="176" width="150" height="24" rx="12" fill="#D6246E"/>
+        <text x="469" y="193" text-anchor="middle" font-family="Mukta,sans-serif" font-weight="800" font-size="13" fill="#FFFDF6">Din 12: alert bheja</text>
+      </svg>
+      </div>
+      <p>Ten normal days, then three days of drinking less in the heat. Sheru sent one message on day 12. Bruno's family moved his bowl to a cooler spot and he was back to normal by day 14. <span class="fine">Illustrative example.</span></p>
+    </figure>
+
+    <div class="never">
+      <div><b>Sheru is not a doctor.</b> It never diagnoses. It tells you when to call one.</div>
+      <div><b>No cameras, no collar.</b> Your dog just eats from his bowl like always.</div>
+      <div><b>Your data stays yours.</b> Stored in India, never sold.</div>
+    </div>
+  </div>
+</section>
+
+<div class="scallop" style="--from:var(--neela);--to:var(--haldi)" aria-hidden="true"></div>
+
+<section class="app" id="app">
+  <div class="wrap app-grid">
+    <div class="phone" aria-label="Sample screen of the Sheru app daily report">
+      <div class="screen">
+        <div class="top"><b>Bruno ka din</b><span class="pill warn">Dhyaan dein</span></div>
+        <div class="metric">
+          <div class="row"><span>Khana</span><span>312 / 340 g</span></div>
+          <div class="bar"><i style="width:92%;background:var(--tota)"></i></div>
+        </div>
+        <div class="metric">
+          <div class="row"><span>Paani</span><span>0.9 / 1.4 L</span></div>
+          <div class="bar"><i style="width:64%;background:var(--rani)"></i></div>
+        </div>
+        <div class="metric">
+          <div class="row"><span>Meals</span><span>2 · 8:10am, 7:45pm</span></div>
+        </div>
+        <div class="msg alert">Aaj Bruno ne apne normal se 36% kam paani piya. Delhi mein 43°C hai. Katori ko thandi jagah rakhein aur shaam ko paani dobara bharein.</div>
+        <div class="msg">Khana bilkul normal hai. Shabaash Bruno! 🐾</div>
+        <p class="sample">Sample report for illustration</p>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="eyebrow" style="color:var(--rani)">Sheru app</span>
+        <h2>Report jo Mummy bhi samjhein.</h2>
+        <p>No graphs you have to decode. Sheru tells you what happened, why it might matter, and what to do next.</p>
+      </div>
+      <ul>
+        <li>Hindi, English and Hinglish, with Tamil, Kannada, Marathi and Bengali next</li>
+        <li>One-tap WhatsApp share to your vet or family group</li>
+        <li>Vaccination and deworming reminders on the Indian schedule</li>
+        <li>Festival mode for Diwali, Holi and New Year's Eve</li>
+        <li>Multiple family members on one dog, multiple dogs on one account</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="scallop" style="--from:var(--haldi);--to:var(--chalk)" aria-hidden="true"></div>
+
+<section class="seasons" id="mausam">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--rani)">Mausam guide</span>
+      <h2>Bharat ke chhe ritu, aur har ritu ka dhyaan.</h2>
+      <p>India runs on six seasons, not four. Pick one to see what Sheru watches for.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Seasons" id="tabs"></div>
+    <div class="season-panel" id="panel" role="tabpanel"></div>
+  </div>
+</section>
+
+<section class="life" id="life">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--rani)">Made for busy pet parents</span>
+      <h2>Aap office mein. Woh ghar pe. Tension nahi.</h2>
+      <p>Long commutes, late calls, weekend trips. Most of the day someone else is with your dog. Sheru shows you what actually happened.</p>
+    </div>
+    <div class="life-grid">
+      <article class="scene"><span class="time">1:30 pm · Cyber City</span><h3>"Didi ne lunch diya?"</h3><p>The app shows the bowl was filled at 1:12 pm and he finished 180 g by 1:20. No need to call home.</p></article>
+      <article class="scene"><span class="time">7:00 pm · Andheri traffic</span><h3>Walker skipped the water refill</h3><p>The water bowl has been empty for 3 hours. You get a nudge to message the walker.</p></article>
+      <article class="scene"><span class="time">Friday · Goa trip</span><h3>Boarding with a friend or at a pet hotel</h3><p>Take the Katori along. Watch his meals from Goa and come back to a full report.</p></article>
+      <article class="scene"><span class="time">Saturday · vet visit</span><h3>Show the vet real numbers</h3><p>Open 30 days of eating and drinking history instead of saying "thoda kam kha raha hai, I think."</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="breeds">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Har nasl ke liye</span>
+      <h2>The dogs Indian homes love, and what each one needs.</h2>
+      <p>Sheru starts with a baseline for your breed, then learns your dog. A Husky in Hyderabad needs different alerts than an indie in Indore.</p>
+    </div>
+    <div class="breed-grid">
+      <article class="breed"><span class="from">Most popular</span><h3>Labrador</h3><span class="kg">25–36 kg</span><p>Will eat anything, anytime. Sheru keeps portions honest so the kilos don't creep up.</p></article>
+      <article class="breed"><span class="from">Family favourite</span><h3>Golden Retriever</h3><span class="kg">25–34 kg</span><p>Thick coat in Indian summers. Water alerts matter most from April to June.</p></article>
+      <article class="breed"><span class="from">Apartment pick</span><h3>Shih Tzu</h3><span class="kg">4–7 kg</span><p>Small dog, small meals. A 30 g drop is a big deal, and Sheru notices it.</p></article>
+      <article class="breed"><span class="from">Always hungry</span><h3>Beagle</h3><span class="kg">9–11 kg</span><p>Famous for raiding the kitchen. You'll see every extra refill.</p></article>
+      <article class="breed"><span class="from">Needs the AC</span><h3>Siberian Husky</h3><span class="kg">16–27 kg</span><p>Built for snow, living in 40°C. The breed that most needs heat-season tracking.</p></article>
+      <article class="breed"><span class="from">Adopt, don't shop</span><h3>Indie</h3><span class="kg">15–30 kg</span><p>Tough and heat-smart, but still needs tick-season watching after monsoon walks.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="khana">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Khana calculator</span>
+      <h2>Kitna khilana hai? Andaaza lagao.</h2>
+      <p>A quick daily estimate from weight, age and how active your dog is. Katori fine-tunes it to the gram once it knows your dog.</p>
+    </div>
+    <div class="calc-box">
+      <form id="calcForm" onsubmit="return false">
+        <div class="field"><label for="dogName">Dog's name</label><input id="dogName" value="Bruno" maxlength="24"></div>
+        <div class="field"><label for="weight">Weight (kg)</label><input id="weight" type="number" min="1" max="90" step="0.5" value="22"></div>
+        <div class="field"><label for="life">Age</label>
+          <select id="life"><option value="3">Puppy (under 1 year)</option><option value="1.6" selected>Adult (1–7 years)</option><option value="1.3">Senior (7+ years)</option></select></div>
+        <div class="field"><label for="act">Activity</label>
+          <select id="act"><option value="0.85">Sofa pe aaram (low)</option><option value="1" selected>Do walk roz (normal)</option><option value="1.3">Bhaagta rehta hai (high)</option></select></div>
+        <div class="field"><label for="city">Mausam</label>
+          <select id="city"><option value="1">Normal</option><option value="1.35" selected>Garmi (35°C+)</option><option value="0.95">Thand</option></select></div>
+      </form>
+      <div class="result" aria-live="polite">
+        <span class="eyebrow" style="color:var(--rani)" id="rName">Bruno ke liye roz</span>
+        <div class="grams" id="rFood">—</div>
+        <div><span class="water" id="rWater">—</span> <span style="font-weight:700">paani</span></div>
+        <p id="rKcal"></p>
+        <p class="fine">Estimate based on standard resting-energy formulas for dry food at about 3,600 kcal/kg. Every dog is different, so check with your vet before changing diet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price" id="price">
+  <div class="wrap">
+    <div class="sec-head" style="margin-inline:auto;text-align:center;justify-items:center">
+      <span class="eyebrow" style="color:var(--rani)">Diwali launch offer · first 5,000 pet parents</span>
+      <h2>Less than one vet visit. Cares for him every day.</h2>
+    </div>
+    <div class="plans">
+      <div class="price-card">
+        <h3>Sheru Katori</h3>
+        <span class="mrp">MRP ₹7,999</span>
+        <span class="amt">₹4,999</span>
+        <span class="emi">or ₹417/month, no-cost EMI</span>
+        <div class="incl"><span>1 smart steel bowl</span><span>1 year app</span><span>English + Hinglish alerts</span><span>Family sharing</span></div>
+        <a class="btn btn-ghost" href="#top">Pre-book for ₹499</a>
+      </div>
+      <div class="price-card featured">
+        <span class="badge">Most chosen</span>
+        <h3>Sheru Pair</h3>
+        <span class="mrp">MRP ₹13,999</span>
+        <span class="amt">₹8,499</span>
+        <span class="emi">or ₹708/month, no-cost EMI</span>
+        <div class="incl"><span>Food + water bowls</span><span>2 years app</span><span>Monthly vet-ready PDF report</span><span>Travel case for boarding</span><span>Priority WhatsApp support</span></div>
+        <a class="btn btn-primary" href="#top">Pre-book for ₹499</a>
+      </div>
+    </div>
+    <p class="pay">UPI · credit cards · netbanking · pre-booking fully refundable · 30-day no-questions return</p>
+    <div class="cities">
+      <div><b>Tier 1 · delivery in 2 days</b><span>Mumbai · Delhi NCR · Bengaluru · Hyderabad · Chennai · Pune · Kolkata · Ahmedabad</span></div>
+      <div><b>Tier 2 · delivery in 3–4 days</b><span>Jaipur · Chandigarh · Lucknow · Indore · Kochi · Coimbatore · Surat · Nagpur · Bhubaneswar · Dehradun · Vizag · Mysuru · and more</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="horn">Horn OK Please.<br>Bowl OK Please.</div>
+    </div>
+    <p>Sheru is a concept for a smart pet-health bowl made for Indian homes. Not a substitute for veterinary care; if your dog seems unwell, see a vet. Design, Bengaluru, 2026.</p>
+  </div>
+</footer>
+
+<script>
+const seasons=[
+ {id:"vasant",name:"Vasant",dev:"वसंत",months:"Mid-Feb to mid-April",temp:"20–32°C",color:"#2E9E57",
+  head:"Spring, and Holi colours",watch:"Sheru watches: vomiting or skipped meals after Holi, which can mean your dog licked synthetic gulal.",
+  tips:[["Holi ke rang","Keep dogs indoors during play. Wash any colour off with plain water, never kerosene."],["Shedding","Coats thin out. Brush daily and keep the katori area clean of hair."],["Bhaang and gujiya","Both are toxic. Keep the thali high up."]]},
+ {id:"grishma",name:"Grishma",dev:"ग्रीष्म",months:"Mid-April to mid-June",temp:"35–47°C",color:"#D6246E",
+  head:"Peak garmi",watch:"Sheru watches: water intake against your city's temperature, and meal timing shifting to cooler hours.",
+  tips:[["Walk timings","Before 7am and after 7pm only. Test the road with your palm for 5 seconds."],["Paani everywhere","Two bowls at home, refilled twice. Steel stays cooler than plastic."],["Summer cut","A trim helps, but never shave double-coated breeds to the skin."]]},
+ {id:"varsha",name:"Varsha",dev:"वर्षा",months:"Mid-June to mid-August",temp:"25–33°C",color:"#0E4F66",
+  head:"Monsoon and ticks",watch:"Sheru watches: a 2–3 day appetite drop, an early sign of tick fever. Ask your vet about a CBC test.",
+  tips:[["Tick check","Run fingers between toes and inside ears after every walk."],["Paws dry rakho","Wipe and dry paws to prevent fungal infection."],["Puddle water","Leptospirosis spreads through it. Confirm the lepto vaccine is current."]]},
+ {id:"sharad",name:"Sharad",dev:"शरद",months:"Mid-August to mid-October",temp:"24–32°C",color:"#F28C00",
+  head:"Humid and festive",watch:"Sheru watches: weight creep from Navratri and Ganesh Chaturthi prasad sharing.",
+  tips:[["Prasad portions","A tiny bite of plain prasad is fine. Modak with jaggery and ghee is not."],["Pandal noise","Dhol and speakers stress dogs. Keep a quiet room ready."],["Humidity","Still tick season in many cities. Keep up prevention."]]},
+ {id:"hemant",name:"Hemant",dev:"हेमंत",months:"Mid-October to mid-December",temp:"15–28°C",color:"#7A3FB0",
+  head:"Diwali and patakas",watch:"Sheru watches: skipped or rushed meals on firecracker nights, and how many days your dog takes to recover.",
+  tips:[["Pataka raat","Close windows, play music, stay home. Give a meal an hour before the noise starts."],["Mithai alert","Chocolate, dry fruits and xylitol sweets are dangerous. Tell guests too."],["Smog","On bad AQI days, keep walks short."]]},
+ {id:"shishir",name:"Shishir",dev:"शिशिर",months:"Mid-December to mid-February",temp:"4–22°C",color:"#1B1530",
+  head:"North Indian thand",watch:"Sheru watches: higher food intake in the cold, and slower drinking that can mean joint pain in seniors.",
+  tips:[["Sweater sahi hai","Short-coated indies and seniors benefit from one. Skip it indoors."],["Heater safety","Keep beds away from room heaters and angithis."],["Lukewarm paani","Dogs drink more when the water isn't ice cold."]]}
+];
+const tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+function show(i){
+  const s=seasons[i];
+  [...tabs.children].forEach((b,j)=>b.setAttribute("aria-selected",j===i));
+  panel.innerHTML=`<div class="season-side" style="background:${s.color}">
+    <span class="big">${s.dev}</span><span class="months">${s.name} · ${s.months}</span><span class="temp">${s.temp}</span></div>
+    <div class="season-body"><h3>${s.head}</h3><div class="tips">${s.tips.map(t=>`<div class="tip"><b>${t[0]}</b><span>${t[1]}</span></div>`).join("")}</div>
+    <div class="watch">${s.watch}</div></div>`;
+  try{localStorage.setItem("sheru-season",i)}catch(e){}
+}
+seasons.forEach((s,i)=>{const b=document.createElement("button");b.className="tab";b.role="tab";b.id="tab-"+s.id;b.textContent=`${s.name} · ${s.dev}`;b.onclick=()=>show(i);tabs.appendChild(b)});
+let start=4;try{const v=localStorage.getItem("sheru-season");if(v!==null)start=+v}catch(e){}
+show(start>=0&&start<6?start:4);
+
+const $=id=>document.getElementById(id);
+function calc(){
+  const w=Math.max(1,Math.min(90,parseFloat($("weight").value)||0));
+  const name=($("dogName").value.trim()||"Sheru");
+  const rer=70*Math.pow(w,0.75);
+  const kcal=rer*parseFloat($("life").value)*parseFloat($("act").value);
+  const grams=Math.round(kcal/3.6/5)*5;
+  const water=(w*55*parseFloat($("city").value)/1000).toFixed(1);
+  $("rName").textContent=`${name} ke liye roz`;
+  $("rFood").innerHTML=`${grams}<small> g dry food</small>`;
+  $("rWater").textContent=`${water} L`;
+  $("rKcal").textContent=`About ${Math.round(kcal).toLocaleString("en-IN")} kcal a day. Split into two meals of ${Math.round(grams/2)} g each.`;
+}
+["dogName","weight","life","act","city"].forEach(id=>$(id).addEventListener("input",calc));
+calc();
+</script>
+</body>
+</html>
